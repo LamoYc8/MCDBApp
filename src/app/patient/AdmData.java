@@ -9,18 +9,18 @@ import app.dataAcess.OperationData;
 public class AdmData
 {
     private String nom;
-    private String prenom;
-    private String dateNaiss;
-    private String aContacter;
-    private String numDossier;
+    private String prenom;// first name
+    private String dateNaiss;//出生日期
+    private String aContacter;//
+    private String numDossier; //
     private String codePostal;
-    private String ville;
-    private String pays;
-    private String lieuNaiss;
+    private String ville;//城市
+    private String pays; //国家
+    private String lieuNaiss;// date birth place
     private String num;
     private String mail;
-    private String civ;
-    private String adresse;
+    private String civ;//户籍地址
+    private String adresse;//地址
 
     
     
