@@ -26,11 +26,11 @@ public class CreateMedicalExamPanel extends AbstractPanel
 	
 	public CreateMedicalExamPanel()
 	{
-		setTitle("Joindre un examen");
+		setTitle("Join a exam");
 		
 		content.setLayout(new MigLayout("", "[100px:n:250px,grow][]2%[300:n:600px,grow]", "[][32px,fill][][32px,fill][40px][][100px:n:300px,grow][32px,grow][40px]"));
 		
-		JLabel lblTitle = new JLabel("Intitulé");
+		JLabel lblTitle = new JLabel("Title");
 		content.add(lblTitle, "cell 0 0");
 		
 		JLabel lblDate = new JLabel("Date");
@@ -43,7 +43,7 @@ public class CreateMedicalExamPanel extends AbstractPanel
 		JXDatePicker datePicker = new JXDatePicker();
 		content.add(datePicker, "flowx,cell 2 1");
 		
-		JLabel lblFile = new JLabel("Fichier");
+		JLabel lblFile = new JLabel("File");
 		content.add(lblFile, "cell 0 2");
 		
 		JLabel lblType = new JLabel("Type");
@@ -58,10 +58,10 @@ public class CreateMedicalExamPanel extends AbstractPanel
 		content.add(btnFile, "flowx,cell 1 3");
 		
 		JComboBox<String> cmbType = new JComboBox<String>();
-		cmbType.addItem("Imagerie médicale");
-		cmbType.addItem("Examen de laboratoire");
-		cmbType.addItem("Donnée thérapeutique");
-		cmbType.addItem("Autre");
+		cmbType.addItem("Medical image");
+		cmbType.addItem("Exam of lab");
+		cmbType.addItem("Data of treatment");
+		cmbType.addItem("Other");
 		cmbType.setMaximumSize(new Dimension(200, 32767));
 		content.add(cmbType, "cell 2 3,growx");
 		
@@ -77,12 +77,12 @@ public class CreateMedicalExamPanel extends AbstractPanel
 		flowLayout.setVgap(0);
 		content.add(panel, "cell 0 8 3 1,grow");
 		
-		JButton btnSave = new JButton("Enregistrer");
+		JButton btnSave = new JButton("Registration");
 		btnSave.setPreferredSize(new Dimension(120, 40));
 		btnSave.setFont(new Font("DejaVu Sans", Font.BOLD, 14));
 		panel.add(btnSave);
 		
-		JLabel lblFonctionnalitNonFinalise = new JLabel("fonctionnalité non finalisée");
+		JLabel lblFonctionnalitNonFinalise = new JLabel("Functions not finished");
 		lblFonctionnalitNonFinalise.setForeground(Color.RED);
 		content.add(lblFonctionnalitNonFinalise, "cell 2 1");
 		

@@ -36,12 +36,12 @@ public class UpdateUserPermissionsPanel extends AbstractPanel
 		this.user = user;
 		content.setLayout(new BorderLayout());
 		
-		setTitle("Gérer les permissions de l'utilisateur");
+		setTitle("Manage user's permissions");
 		content.setLayout(new BorderLayout());
 		
 		PermissionButtonListener permissionButtonListener = new PermissionButtonListener();
 		
-		JLabel lblPatientList = new JLabel("Liste des patients");
+		JLabel lblPatientList = new JLabel("List of patients");
 		content.add(lblPatientList);
 		
 		selectionTable = new SelectionTable(new PatientTableModel(Dossier.loadAll()));
@@ -73,11 +73,11 @@ public class UpdateUserPermissionsPanel extends AbstractPanel
 			
 		if (selectedMedicalRecord.isAssignedTo(user))
 		{
-			btnPermission.setText("Interdire");
+			btnPermission.setText("Prohibit");
 		}
 		else
 		{
-			btnPermission.setText("Autoriser");
+			btnPermission.setText("Authorize");
 		}
 		btnPermission.setEnabled(true);
 	}
@@ -92,7 +92,7 @@ public class UpdateUserPermissionsPanel extends AbstractPanel
 		{
 			this.medicalRecords = rowData;
 			
-			for (String columnName : new String[] { "N° Dossier", "Prénom", "Nom", "Date de naissance", "Code postal", "Ville", "Pays", "Permission" })
+			for (String columnName : new String[] { "N° Document", "Firstname", "Lastname", "Birthday", "Zip Code", "City", "Country", "Permission" })
 			{
 				addColumn(columnName);
 			}
@@ -129,7 +129,7 @@ public class UpdateUserPermissionsPanel extends AbstractPanel
 				case 4: return rowData.getCodePostal();
 				case 5: return rowData.getVille();
 				case 6: return rowData.getPays();
-				case 7: return medicalRecords[row].isAssignedTo(user) ? "Autorisée" : "Refusée";
+				case 7: return medicalRecords[row].isAssignedTo(user) ? "Authorize" : "Refuse";
 			}
 			throw new IndexOutOfBoundsException();
 		}
@@ -172,7 +172,7 @@ public class UpdateUserPermissionsPanel extends AbstractPanel
 		public void actionPerformed(ActionEvent e) {
 			Dossier selectedMedicalRecord = ((PatientTableModel) selectionTable.getModel()).getSelectedMedicalRecord();
 			if (selectedMedicalRecord == null) {
-				Toast.makeText(Window.getInstance(), "Veuillez sélectionner un élément du tableau", Style.ERROR).display();
+				Toast.makeText(Window.getInstance(), "Please select a element of table", Style.ERROR).display();
 				return;
 			}
 			
@@ -193,7 +193,7 @@ public class UpdateUserPermissionsPanel extends AbstractPanel
 			catch (SQLException ex)
 			{
 				ex.printStackTrace();
-				Toast.makeText(Window.getInstance(), "Une erreur est survenue lors de la mise à jour des données", Style.ERROR).display();
+				Toast.makeText(Window.getInstance(), "There is an error when you update your data", Style.ERROR).display();
 			}
 		}
 	}

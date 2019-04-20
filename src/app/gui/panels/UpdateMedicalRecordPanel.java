@@ -21,12 +21,12 @@ public class UpdateMedicalRecordPanel extends AbstractMedicalRecordPanel
 	{	
 		if (PatientSelector.getInstance().getPatientRecord() == null)
 		{
-			call(new SelectMedicalRecordPanel(this), "Vous devez sélectionner un patient avant de pouvoir modifier ses données administratives");
+			call(new SelectMedicalRecordPanel(this), "You should select a patient before modify administrative data ");
 		}
 		else
 		{
 			AdmData admData = PatientSelector.getInstance().getPatientRecord().getData();
-			setTitle("Données administratives");
+			setTitle("Administrative data");
 			createView();
 			
 			txtIdentifier.setEditable(false);
@@ -68,10 +68,10 @@ public class UpdateMedicalRecordPanel extends AbstractMedicalRecordPanel
 					patient.load(patient.getData().getNumDossier());
 					PatientSelector.getInstance().setPatient(patient);
 					
-					Toast.makeText(Window.getInstance(), "Les données du patient ont été mises à jour", Style.SUCCESS).display();
+					Toast.makeText(Window.getInstance(), "The patient's data has been updated", Style.SUCCESS).display();
 				} catch (SQLException ex) {
 					ex.printStackTrace();
-					Toast.makeText(Window.getInstance(), "Une erreur est survenue lors de la mise à jour des données", Style.ERROR).display();
+					Toast.makeText(Window.getInstance(), "There is an error before you update data", Style.ERROR).display();
 				}
 			}
 			else

@@ -40,14 +40,14 @@ public class SelectMedicalReportPanel extends AbstractPanel
 	{
 		if (PatientSelector.getInstance().getPatientRecord() == null)
 		{
-			call(new SelectMedicalRecordPanel(this), "Vous devez sélectionner un patient avant de pouvoir traiter les rapports médicaux");
+			call(new SelectMedicalRecordPanel(this), "You should select a patient before you process medical reports");
 		}
 		else
 		{
-			setTitle("Sélectionner un rapport médical");
+			setTitle("Select a medical report");
 		    content.setLayout(new BorderLayout());
 		    
-		    JLabel lblMedicalRecords = new JLabel("Rapports médicaux");
+		    JLabel lblMedicalRecords = new JLabel("Medical Reports");
 		    lblMedicalRecords.setBorder(new EmptyBorder(0, 0, 10, 0));
 		    content.add(lblMedicalRecords, BorderLayout.NORTH);
 		    
@@ -61,7 +61,7 @@ public class SelectMedicalReportPanel extends AbstractPanel
 		    panel.setOpaque(false);
 		    content.add(panel, BorderLayout.SOUTH);
 		    
-		    btnNew = new JButton("Nouveau");
+		    btnNew = new JButton("New");
 		    btnNew.setPreferredSize(new Dimension(120, 40));
 		    btnNew.setFont(new Font("DejaVu Sans", Font.BOLD, 14));
 		    btnNew.addActionListener((ActionEvent e) -> Window.switchPanel(new CreateMedicalReportPanel()));
@@ -73,7 +73,7 @@ public class SelectMedicalReportPanel extends AbstractPanel
 		    btnInteract.setEnabled(false);
 		    panel.add(btnInteract);
 		    
-		    btnRemove = new JButton("Supprimer");
+		    btnRemove = new JButton("Delete");
 		    btnRemove.setPreferredSize(new Dimension(120, 40));
 		    btnRemove.setFont(new Font("DejaVu Sans", Font.BOLD, 14));
 		    btnRemove.addActionListener((ActionEvent e) -> {});
@@ -90,7 +90,7 @@ public class SelectMedicalReportPanel extends AbstractPanel
 		public ReportTableModel(Rapport rowData[]) {
 			this.patientReports = rowData;
 			
-			for (String columnName : new String[] { "N° Rapport", "Intitulé", "Date", "Extrait", "État" })
+			for (String columnName : new String[] { "N° Report", "Title", "Date", "Abstract", "Status" })
 			{
 				addColumn(columnName);
 			}
@@ -129,7 +129,7 @@ public class SelectMedicalReportPanel extends AbstractPanel
 					if (reportText.length() > 100) reportText = reportText.substring(0, 100) + "..."; 
 					return reportText;
 				}
-				case 4: return (patientReport.isValide()) ? "Validé" : "Brouillon";
+				case 4: return (patientReport.isValide()) ? "Effect" : "Draft";
 			}
 			throw new IndexOutOfBoundsException();
 		}
@@ -164,7 +164,7 @@ public class SelectMedicalReportPanel extends AbstractPanel
 					selectedReport = ((ReportTableModel) selectionTable.getModel()).getReport(selectedRow);
 					if (selectedReport.isValide())
 					{
-						btnInteract.setText("Consulter");
+						btnInteract.setText("Consult");
 						if (!valid)
 						{
 							btnInteract.removeActionListener(editListener);
@@ -176,7 +176,7 @@ public class SelectMedicalReportPanel extends AbstractPanel
 					}
 					else
 					{
-						btnInteract.setText("Modifier");
+						btnInteract.setText("Modify");
 						if (!valid)
 						{
 							btnInteract.removeActionListener(viewListener);

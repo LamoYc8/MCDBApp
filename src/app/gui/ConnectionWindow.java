@@ -57,9 +57,8 @@ public class ConnectionWindow extends JFrame
 		lblConnection.setHorizontalAlignment(SwingConstants.CENTER);
 		lblConnection.setBounds(12, 44, 476, 24);
 		contentPane.add(lblConnection);
-		
 		ConnectButtonListener connectionListener = new ConnectButtonListener();
-		
+
 		txtLogin = new JTextField("gjack@mail.fr");
 		txtLogin.setBounds(110, 100, 280, 32);
 		contentPane.add(txtLogin);

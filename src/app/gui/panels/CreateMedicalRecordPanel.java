@@ -18,7 +18,7 @@ public class CreateMedicalRecordPanel extends AbstractMedicalRecordPanel
 {
 	public CreateMedicalRecordPanel()
 	{
-		setTitle("Créer un dossier patient");
+		setTitle("Create a patient document");
 		createView();
 		btnSubmit.addActionListener(new CreateButtonListener());
 		
@@ -38,19 +38,19 @@ public class CreateMedicalRecordPanel extends AbstractMedicalRecordPanel
 				{
 					patient.create();
 					
-					Toast.makeText(Window.getInstance(), "Les patient '<b>" + txtFirstName.getText() + " " + txtLastName.getText() + " (" + txtIdentifier.getText() + ")" + "'</b> à été crée avec succès", Style.SUCCESS).display();
+					Toast.makeText(Window.getInstance(), "The patient '<b>" + txtFirstName.getText() + " " + txtLastName.getText() + " (" + txtIdentifier.getText() + ")" + "'</b> à été crée avec succès", Style.SUCCESS).display();
 					Utilisateur.getDefaultUser().addDossier(patient.getData().getNumDossier());
 					
 					Window.switchPanel(new SelectMedicalRecordPanel());
 				}
 				catch (SQLException ex)
 				{
-					Toast.makeText(Window.getInstance(), "Une erreur est survenue lors de la création du dossier", Style.ERROR).display();
+					Toast.makeText(Window.getInstance(), "There is an error occurred when you create your document", Style.ERROR).display();
 					ex.printStackTrace();
 				}
 				catch (IllegalStateException ex)
 				{
-					Toast.makeText(Window.getInstance(), "L'identifiant utilisé n'est pas disponible", Style.ERROR).display();
+					Toast.makeText(Window.getInstance(), "The identifier is not available", Style.ERROR).display();
 					ex.printStackTrace();
 				}
 			}

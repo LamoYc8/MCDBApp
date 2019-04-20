@@ -16,7 +16,7 @@ public class CreateMedicalReportPanel extends AbstractMedicalReportPanel{
 
 	public CreateMedicalReportPanel()
 	{
-		setTitle("Créer un rapport médical");
+		setTitle("Create a medical report");
 		createView();
 		btnSauveBrouillon.addActionListener(new ActionListener() {
 
@@ -62,12 +62,12 @@ public class CreateMedicalReportPanel extends AbstractMedicalReportPanel{
 		{
 			rapport.save();
 			PatientSelector.getInstance().getPatientRecord().reload();
-			Toast.makeText(Window.getInstance(), "Le rapport médical a bien été sauvegardé", Style.SUCCESS).display();
+			Toast.makeText(Window.getInstance(), "The medical report is successfully saved", Style.SUCCESS).display();
 		} 
 		catch (SQLException ex) 
 		{
 			ex.printStackTrace();
-			Toast.makeText(Window.getInstance(), "Une erreur est survenue lors de la mise à jour des données", Style.ERROR).display();
+			Toast.makeText(Window.getInstance(), "The is an error occurred when you update your data", Style.ERROR).display();
 		}
 	}	
 }

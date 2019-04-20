@@ -9,10 +9,10 @@ public class HomePanel {
 	{
 		switch (Utilisateur.getDefaultUser().getRole())
 		{
-			case "Medecin":
-			case "Secretaire":
+			case "Doctor":
+			case "Secretary":
 				return new SelectMedicalRecordPanel();
-			case "Admin":
+			case "Administrator":
 				return new ManageUsersPanel();
 		}
 		return new JPanel();

@@ -36,9 +36,9 @@ class NavigationMenu extends JPanel
             */
         },
         {
-            new NavigationMenuItem("create an account", "create a new user", "app.gui.panels.CreateUserPanel", "Admin"),
-            new NavigationMenuItem("users' behaviors", "Modify or delete existed account", "app.gui.panels.ManageUsersPanel", "Admin"),
-            new NavigationMenuItem("hospital's service", "Affect hospital's services to a user", null, "Admin")
+            new NavigationMenuItem("Create an account", "create a new user", "app.gui.panels.CreateUserPanel", "Admin"),
+            new NavigationMenuItem("Users' behaviors", "Modify or delete existed account", "app.gui.panels.ManageUsersPanel", "Admin"),
+            new NavigationMenuItem("Hospital's service", "Affect hospital's services to a user", null, "Admin")
         },
         {
             new NavigationMenuItem("Selection a document", "Selection a medical document for start some treatments", "app.gui.panels.SelectMedicalRecordPanel", "Doctor|Secretary"),

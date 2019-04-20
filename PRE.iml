@@ -19,7 +19,7 @@
       <sourceFolder url="file://$MODULE_DIR$/res" isTestSource="false" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="1.8.0_191" jdkType="JavaSDK" />
     <orderEntry type="module-library">
       <library name="swingx-all-1.6.4.jar">
         <CLASSES>
@@ -49,6 +49,5 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="mysql-connector-java-8.0.15" level="application" />
   </component>
 </module>

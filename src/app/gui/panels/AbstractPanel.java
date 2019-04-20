@@ -68,7 +68,7 @@ public abstract class AbstractPanel extends JPanel {
 		if (titleLabel == null) {
 			titleLabel = new JLabel(title);
 			titleLabel.setBorder(BorderFactory.createEmptyBorder(0, 0, 20, 0));
-			titleLabel.setFont(new Font("Liberation Sans", Font.BOLD, 28));
+			titleLabel.setFont(new Font("Without Liberation", Font.BOLD, 28));
 			container.add(titleLabel, BorderLayout.NORTH);
 		} else {
 			titleLabel.setText(title);

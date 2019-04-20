@@ -13,11 +13,11 @@ public class ViewMedicalReportPanel extends AbstractMedicalReportPanel {
 	{
 		if (PatientSelector.getInstance().getPatientRecord() == null)
 		{
-			call(new SelectMedicalRecordPanel(this), "Vous devez sélectionner un patient avant de pouvoir modifier ses données administratives");
+			call(new SelectMedicalRecordPanel(this), "You should select a patient before modify administrative data");
 		}
 		else
 		{
-			setTitle("Consulter un rapport médical");
+			setTitle("Consult a medical report");
 			createView();
 			
 			txtIntitule.setText(rapport.getIntitule());

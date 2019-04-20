@@ -30,10 +30,10 @@ public abstract class AbstractMedicalReportPanel extends AbstractPanel {
 
 	public void createView()
 	{
-		setTitle("Consulter un rapport médical");
+		setTitle("Consult a medical report");
 		content.setLayout(new MigLayout("", "[100px:n:250px,grow][100px:n:400px,grow]", "[][32px,fill][][100px:n:300px,fill][][100px:n:200px,grow,fill][32px,grow][40px,fill]"));
 		
-		JLabel lblIntitule = new JLabel("Intitulé");
+		JLabel lblIntitule = new JLabel("Title");
 		content.add(lblIntitule, "cell 0 0");
 			
 		JLabel lblDate = new JLabel("Date");
@@ -48,7 +48,7 @@ public abstract class AbstractMedicalReportPanel extends AbstractPanel {
 		content.add(datePicker, "cell 1 1");
 		lblDate.setLabelFor(datePicker);
 			
-		JLabel lblRapport = new JLabel("Rapport");
+		JLabel lblRapport = new JLabel("Report");
 		content.add(lblRapport, "cell 0 2");
 			
 		txtRapport = new JTextArea();
@@ -67,12 +67,12 @@ public abstract class AbstractMedicalReportPanel extends AbstractPanel {
 		flowLayout.setVgap(0);
 		content.add(panel, "cell 0 7 2 1,grow");
 			
-		btnSauveBrouillon = new JButton("Sauvegarder en tant que brouillon");
+		btnSauveBrouillon = new JButton("Save as draft");
 		btnSauveBrouillon.setPreferredSize(new Dimension(304, 40));
 		btnSauveBrouillon.setFont(new Font("DejaVu Sans", Font.BOLD, 14));
 		panel.add(btnSauveBrouillon);
 			
-		btnSauveDef = new JButton("Sauvegarder définitivement");
+		btnSauveDef = new JButton("Save for sure");
 		btnSauveDef.setPreferredSize(new Dimension(260, 40));
 		btnSauveDef.setFont(new Font("DejaVu Sans", Font.BOLD, 14));
 		panel.add(btnSauveDef);

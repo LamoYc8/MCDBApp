@@ -243,7 +243,7 @@ public class SelectionTable extends JXTable {
 				}
 				
 				
-				cmbFilterColumn.addItem("Tous");
+				cmbFilterColumn.addItem("All");
 				for (int i = 0; i < getColumnCount(); i++)
 				{
 					cmbFilterColumn.addItem(getColumnName(i));

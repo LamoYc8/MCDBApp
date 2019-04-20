@@ -96,7 +96,7 @@ public class Validator
 					}
 					else
 					{
-						errorMessage = "Veuillez remplir tous les champs requis";
+						errorMessage = "Please fill in all the required boxes";
 					}
 					return false;
 				}

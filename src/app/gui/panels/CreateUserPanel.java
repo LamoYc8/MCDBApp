@@ -34,16 +34,16 @@ public class CreateUserPanel extends AbstractPanel
 	
 	public CreateUserPanel()
 	{
-		setTitle("Créer un compte utilisateur");
+		setTitle("Create a user's account");
 		content.setLayout(new MigLayout("", "[100px:n:250px,grow,fill]2%[100px:n:250px,grow,fill]2%[100px:n:250px,grow]", "[][32px,fill]2%[][32px,fill][][32px,fill][32,grow][40px,fill]"));
 		
-		JLabel lblFirstName = new JLabel("Prénom");
+		JLabel lblFirstName = new JLabel("Firstname");
 		content.add(lblFirstName, "cell 0 0");
 		
-		JLabel lblLastName = new JLabel("Nom");
+		JLabel lblLastName = new JLabel("Lastname");
 		content.add(lblLastName, "cell 1 0");
 		
-		JLabel lblRole = new JLabel("Rôle");
+		JLabel lblRole = new JLabel("Role");
 		content.add(lblRole, "cell 2 0");
 		
 		txtFirstName = new JTextField();
@@ -57,15 +57,15 @@ public class CreateUserPanel extends AbstractPanel
 		cmbRole = new JComboBox<String>();
 		cmbRole.setPreferredSize(new Dimension(180, 32));
 		lblRole.setLabelFor(cmbRole);
-		cmbRole.addItem("Secretaire");
-		cmbRole.addItem("Medecin");
-		cmbRole.addItem("Admin");
+		cmbRole.addItem("Secretary");
+		cmbRole.addItem("Doctor");
+		cmbRole.addItem("Administrator");
 		content.add(cmbRole, "cell 2 1");
 		
-		JLabel lblIdentifier = new JLabel("Adresse mail");
+		JLabel lblIdentifier = new JLabel("Addressee mail");
 		content.add(lblIdentifier, "cell 0 2");
 		
-		JLabel lblPassword = new JLabel("Mot de passe");
+		JLabel lblPassword = new JLabel("Password");
 		content.add(lblPassword, "cell 1 2");
 		
 		JLabel lblPasswordConfirm = new JLabel("Confirmation");
@@ -89,7 +89,7 @@ public class CreateUserPanel extends AbstractPanel
 		flowLayout.setVgap(0);
 		content.add(panel, "cell 0 7 2 1,grow");
 		
-		btnSubmit = new JButton("Soumettre");
+		btnSubmit = new JButton("Submit");
 		btnSubmit.setPreferredSize(new Dimension(120, 40));
 		btnSubmit.setFont(new Font("DejaVu Sans", Font.BOLD, 14));
 		panel.add(btnSubmit);
@@ -110,13 +110,13 @@ public class CreateUserPanel extends AbstractPanel
 			{
 				try {
 					Utilisateur.createUtil(txtLastName.getText(), txtFirstName.getText(), txtIdentifier.getText(), String.valueOf(txtPassword.getPassword()), (String) cmbRole.getSelectedItem(), 1);
-					Toast.makeText(Window.getInstance(), "Le compte utilisateur a été créé", Style.SUCCESS).display();
+					Toast.makeText(Window.getInstance(), "User's account is created", Style.SUCCESS).display();
 					Window.switchPanel(new ManageUsersPanel());
 				} catch (SQLException ex) {
 					ex.printStackTrace();
-					Toast.makeText(Window.getInstance(), "Une erreur est survenue lors de la mise à jour des données", Style.ERROR).display();
+					Toast.makeText(Window.getInstance(), "The is an error occurred when you update your data", Style.ERROR).display();
 				} catch (IllegalArgumentException ex) {
-					Toast.makeText(Window.getInstance(), "Le nom d'utilisateur utilisé est indisponible", Style.ERROR).display();
+					Toast.makeText(Window.getInstance(), "User's name is not available", Style.ERROR).display();
 				}
 			}
 			else
@@ -134,7 +134,7 @@ public class CreateUserPanel extends AbstractPanel
 			
 			if (!String.valueOf(txtPassword.getPassword()).equals(String.valueOf(txtPasswordConfirm.getPassword())))
 			{
-				errorMessage = "Le mot de passe entré ne correspond pas au mot de passe de confirmation";
+				errorMessage = "Password that you entered is not correct";
 				return false;
 			}
 				

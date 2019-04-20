@@ -47,10 +47,10 @@ public class ManageUsersPanel extends AbstractPanel
 	
 	public ManageUsersPanel()
 	{
-		setTitle("Gestion des utilisateurs");
+		setTitle("User's interface");
 		content.setLayout(new MigLayout("", "[100px:n:250px,grow,fill]2%[100px:n:250px,grow,fill]2%[100px:n:200px,grow,fill][0px:n:300px,grow,fill]", "[][]20px[][][32px,fill][][32px,fill][32px,grow][40px,fill]"));
 		
-		JLabel lblTable = new JLabel("Sélectionner un utilisateur");
+		JLabel lblTable = new JLabel("Select a user");
 		content.add(lblTable, "cell 0 0");
 		
 		selectionTable = new SelectionTable(new UserTableModel(Utilisateur.allUti()));
@@ -58,16 +58,16 @@ public class ManageUsersPanel extends AbstractPanel
 	    selectionTable.getSelectionModel().addListSelectionListener(new SelectionListener());
 		content.add(selectionTable.getTableWithFilters(), "cell 0 1 4 1");
 		
-		TitleLabel titleCivility = new TitleLabel("MODIFIER LES INFORMATIONS DE L'UTILISATEUR");
+		TitleLabel titleCivility = new TitleLabel("MODIFY USER'S INFORMATION");
 		content.add(titleCivility, "cell 0 2 3 1");
 		
-		JLabel lblFirstName = new JLabel("Prenom");
+		JLabel lblFirstName = new JLabel("Firstname");
 		content.add(lblFirstName, "cell 0 3");
 		
-		JLabel lblLastName = new JLabel("Nom");
+		JLabel lblLastName = new JLabel("Lastname");
 		content.add(lblLastName, "flowy,cell 1 3");
 		
-		JLabel lblRole = new JLabel("Rôle");
+		JLabel lblRole = new JLabel("Role");
 		content.add(lblRole, "cell 2 3");
 		
 		txtFirstName = new JTextField();
@@ -82,16 +82,16 @@ public class ManageUsersPanel extends AbstractPanel
 		
 		cmbRole = new JComboBox<String>();
 		lblRole.setLabelFor(cmbRole);
-		cmbRole.addItem("Secretaire");
-		cmbRole.addItem("Medecin");
-		cmbRole.addItem("Admin");
+		cmbRole.addItem("Secretary");
+		cmbRole.addItem("Doctor");
+		cmbRole.addItem("Administrator");
 		cmbRole.setEnabled(false);
 		content.add(cmbRole, "cell 2 4");
 		
-		JLabel lblIdentifier = new JLabel("Adresse mail");
+		JLabel lblIdentifier = new JLabel("Addressee mail");
 		content.add(lblIdentifier, "cell 0 5");
 		
-		JLabel lblPassword = new JLabel("Mot de passe");
+		JLabel lblPassword = new JLabel("Password");
 		content.add(lblPassword, "cell 1 5");
 		
 		JLabel lblPasswordConfirm = new JLabel("Confirmation");
@@ -118,27 +118,27 @@ public class ManageUsersPanel extends AbstractPanel
 		flowLayout.setVgap(0);
 		content.add(panButtons, "cell 0 8 3 1,grow");
 		
-		btnNew = new JButton("Nouveau");
+		btnNew = new JButton("New");
 		btnNew.setPreferredSize(new Dimension(120, 40));
 		btnNew.setFont(new Font("DejaVu Sans", Font.BOLD, 14));
 		btnNew.addActionListener((ActionEvent e)->Window.switchPanel(new CreateUserPanel()));
 		panButtons.add(btnNew);
 		
-		btnEdit = new JButton("Modifier");
+		btnEdit = new JButton("Modify");
 		btnEdit.setPreferredSize(new Dimension(120, 40));
 		btnEdit.setFont(new Font("DejaVu Sans", Font.BOLD, 14));
 		btnEdit.setEnabled(false);
 		btnEdit.addActionListener(new EditButtonListener());
 		panButtons.add(btnEdit);
 		
-		btnRemove = new JButton("Supprimer");
+		btnRemove = new JButton("Delete");
 		btnRemove.setPreferredSize(new Dimension(120, 40));
 		btnRemove.setFont(new Font("DejaVu Sans", Font.BOLD, 14));
 		btnRemove.setEnabled(false);
 		btnRemove.addActionListener(new RemoveButtonListener());
 		panButtons.add(btnRemove);
 		
-		btnPermission = new JButton("Gérer les accès");
+		btnPermission = new JButton("Access");
 		btnPermission.setPreferredSize(new Dimension(120, 40));
 		btnPermission.setFont(new Font("DejaVu Sans", Font.BOLD, 14));
 		btnPermission.setEnabled(false);
@@ -158,7 +158,7 @@ public class ManageUsersPanel extends AbstractPanel
 		public UserTableModel(Utilisateur[] users)
 		{
 			this.users = users;
-			for (String columnName : new String[] { "Adresse mail", "Prénom", "Nom", "Rôle", "" })
+			for (String columnName : new String[] { "Addressee mail", "Firstname", "Lastname", "Role", "" })
 			{
 				addColumn(columnName);
 			}
@@ -255,11 +255,11 @@ public class ManageUsersPanel extends AbstractPanel
 					selectedUser.updateUtil();
 					selectionTable.repaint();
 					
-					Toast.makeText(Window.getInstance(), "Les données de l'utilisateur ont été mises à jour", Style.SUCCESS).display();
+					Toast.makeText(Window.getInstance(), "User's data has been updated", Style.SUCCESS).display();
 				}
 				catch (SQLException ex)
 				{
-					Toast.makeText(Window.getInstance(), "Une erreur est survenue lors de la mise à jour des données", Style.ERROR).display();
+					Toast.makeText(Window.getInstance(), "The is an error occurred when you update your data", Style.ERROR).display();
 				}
 			}
 			else
@@ -297,7 +297,7 @@ public class ManageUsersPanel extends AbstractPanel
 			
 			if (newPassword == null && newPasswordConfirm != null)
 			{
-				errorMessage = getMissingFieldErrorMessage("Mot de passe");
+				errorMessage = getMissingFieldErrorMessage("Password");
 				return false;
 			}
 			if (newPassword != null && newPasswordConfirm == null)
@@ -307,7 +307,7 @@ public class ManageUsersPanel extends AbstractPanel
 			}
 			if (!newPassword.equals(newPasswordConfirm))
 			{
-				errorMessage = "Le mot de passe entré ne correspond pas au mot de passe de confirmation";
+				errorMessage = "The password is not correct";
 				return false;
 			}
 			return true;

@@ -32,10 +32,10 @@ public class SelectMedicalRecordPanel extends AbstractCallablePanel
 	
 	public SelectMedicalRecordPanel()
 	{
-		setTitle("Sélectionner un dossier médical");
+		setTitle("Select a medical document");
 	    content.setLayout(new BorderLayout());
 	    
-	    JLabel lblMedicalRecords = new JLabel("Dossiers médicaux");
+	    JLabel lblMedicalRecords = new JLabel("Medical Documents");
 	    lblMedicalRecords.setBorder(new EmptyBorder(0, 0, 10, 0));
 	    content.add(lblMedicalRecords, BorderLayout.NORTH);
 	    
@@ -63,15 +63,15 @@ public class SelectMedicalRecordPanel extends AbstractCallablePanel
 	    panel.setOpaque(false);
 	    content.add(panel, BorderLayout.SOUTH);
 	    
-	    JButton btnSelect = new JButton("Sélectionner");
+	    JButton btnSelect = new JButton("Select");
 	    btnSelect.setPreferredSize(new Dimension(130, 40));
 	    btnSelect.setFont(new Font("DejaVu Sans", Font.BOLD, 14));
 	    btnSelect.addActionListener(selectionListener);
 	    panel.add(btnSelect);
 	    
-	    if (Utilisateur.getDefaultUser().getRole().equals("Secretaire")) 
+	    if (Utilisateur.getDefaultUser().getRole().equals("Secretary"))
 	    {
-	    	JButton btnCreate = new JButton("Nouveau dossier");
+	    	JButton btnCreate = new JButton("New Document");
 		    btnCreate.setPreferredSize(new Dimension(170, 40));
 		    btnCreate.setFont(new Font("DejaVu Sans", Font.BOLD, 14));
 		    btnCreate.addActionListener(new CreateButtonListener());
@@ -95,7 +95,7 @@ public class SelectMedicalRecordPanel extends AbstractCallablePanel
 		{
 			this.medicalRecords = rowData;
 			
-			for (String columnName : new String[] { "N° Dossier", "Prénom", "Nom", "Date de naissance", "Code postal", "Ville", "Pays" })
+			for (String columnName : new String[] { "N° Document", "Firstname", "Lastname", "Birthday", "Zip Code", "City", "Country" })
 			{
 				addColumn(columnName);
 			}
@@ -163,13 +163,13 @@ public class SelectMedicalRecordPanel extends AbstractCallablePanel
 			{
 				Dossier medicalRecord = ((PatientTableModel) table.getModel()).getMedicalRecord(table.convertRowIndexToModel(selectedRow));
 				PatientSelector.getInstance().setPatient(medicalRecord);
-				Toast.makeText(Window.getInstance(), "Le patient <b>" + medicalRecord.getData().getPrenom() + " " + medicalRecord.getData().getNom() + " (" + medicalRecord.getData().getNumDossier() + ")</b> a été sélectionné", Style.SUCCESS).display();
+				Toast.makeText(Window.getInstance(), "The patient <b>" + medicalRecord.getData().getPrenom() + " " + medicalRecord.getData().getNom() + " (" + medicalRecord.getData().getNumDossier() + ")</b> a été sélectionné", Style.SUCCESS).display();
 				
 				if (getCaller() != null) returnCall();
 			}
 			else
 			{
-				Toast.makeText(Window.getInstance(), "Aucun patient sélectionné", Style.ERROR).display();
+				Toast.makeText(Window.getInstance(), "No patient is selected", Style.ERROR).display();
 			}
 		}
 	}
