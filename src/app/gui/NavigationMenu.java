@@ -36,9 +36,9 @@ class NavigationMenu extends JPanel
             */
         },
         {
-            new NavigationMenuItem("Create an account", "create a new user", "app.gui.panels.CreateUserPanel", "Admin"),
-            new NavigationMenuItem("Users' behaviors", "Modify or delete existed account", "app.gui.panels.ManageUsersPanel", "Admin"),
-            new NavigationMenuItem("Hospital's service", "Affect hospital's services to a user", null, "Admin")
+            new NavigationMenuItem("Create an account", "create a new user", "app.gui.panels.CreateUserPanel", "Administrator"),
+            new NavigationMenuItem("Users' behaviors", "Modify or delete existed account", "app.gui.panels.ManageUsersPanel", "Administrator"),
+            new NavigationMenuItem("Hospital's service", "Affect hospital's services to a user", null, "Administrator")
         },
         {
             new NavigationMenuItem("Selection a document", "Selection a medical document for start some treatments", "app.gui.panels.SelectMedicalRecordPanel", "Doctor|Secretary"),
@@ -48,8 +48,8 @@ class NavigationMenu extends JPanel
             new NavigationMenuItem("Hospital's service", "Affect hospital's services to a patient", null, "Doctor|Secretary")
         },
         {
-            new NavigationMenuItem("Create a hospital", "Create a new hospital information", null, "Admin"),
-            new NavigationMenuItem("Hospital's behaviors", "Consult, modify or delete data about hospital", null, "Admin")
+            new NavigationMenuItem("Create a hospital", "Create a new hospital information", null, "Administrator"),
+            new NavigationMenuItem("Hospital's behaviors", "Consult, modify or delete data about hospital", null, "Administrator")
         },
         {
             new NavigationMenuItem("Configuration", "Modify the configuration", null),

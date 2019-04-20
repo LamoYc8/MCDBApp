@@ -259,7 +259,7 @@ public class ManageUsersPanel extends AbstractPanel
 				}
 				catch (SQLException ex)
 				{
-					Toast.makeText(Window.getInstance(), "The is an error occurred when you update your data", Style.ERROR).display();
+					Toast.makeText(Window.getInstance(), "There is an error occurred when you update your data", Style.ERROR).display();
 				}
 			}
 			else

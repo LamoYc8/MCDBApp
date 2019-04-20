@@ -112,13 +112,13 @@ public class ConnectionWindow extends JFrame
 				}
 				else
 				{
-					lblStatus.setText("connection impossible");
-					lblStatus2.setText("Usernamer or Password is not correct");
+					lblStatus.setText("Connection Impossible");
+					lblStatus2.setText("Username or Password is not correct");
 					txtLogin.requestFocus();
 				}
 			} catch (SQLException | NullPointerException e) {
-				lblStatus.setText("connection error");
-				lblStatus2.setText("database error");
+				lblStatus.setText("Connection Error");
+				lblStatus2.setText("Database Error");
 			}
 		}
 	}

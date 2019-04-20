@@ -76,14 +76,14 @@ public class Utilisateur
 
     	if(OperationResultSet.contains(id,"utilisateur_id",rs))
     	{
-    		role="Secretaire";
+    		role="Secretary";
     	}
     	
     	rs = (ResultSet) OperationData.lireEnBase("select utilisateur_id from Admin");
 
     	if(OperationResultSet.contains(id,"utilisateur_id",rs))
     	{
-    		role="Admin";
+    		role="Administrator";
     	}
     	
     	//Si dans Medecin
@@ -91,7 +91,7 @@ public class Utilisateur
 
     	if(OperationResultSet.contains(id,"utilisateur_id",rs))
     	{
-    		role="Medecin";
+    		role="Doctor";
     	}
     	ut.setRole(role);
     	return ut;
@@ -145,7 +145,7 @@ public class Utilisateur
     	if(OperationResultSet.contains(identifiant,"utilisateur_id",rs))
     	{
     		id_Uti= identifiant;
-    		role_Uti = "Secretaire";
+    		role_Uti = "Secretary";
     		return true;
     	}
     	
@@ -154,7 +154,7 @@ public class Utilisateur
     	if(OperationResultSet.contains(identifiant,"utilisateur_id",rs))
     	{
     		id_Uti = identifiant;
-    		role_Uti = "Admin";
+    		role_Uti = "Administrator";
     		return true;
     	}
     	
@@ -165,7 +165,7 @@ public class Utilisateur
     	if(OperationResultSet.contains(identifiant,"utilisateur_id",rs))
     	{
     		id_Uti = identifiant;
-    		role_Uti = "Medecin";
+    		role_Uti = "Doctor";
     		return true;
     	}
     	
@@ -197,7 +197,7 @@ public class Utilisateur
     	OperationData.sauverEnBase("DELETE FROM Secretaire WHERE utilisateur_id="+id_Uti+";");
     	OperationData.sauverEnBase("DELETE FROM Medecin WHERE utilisateur_id="+id_Uti+";");
     	
-    	if(role_Uti.equals("Admin")){
+    	if(role_Uti.equals("Administrator")){
     		OperationData.sauverEnBase("INSERT INTO Admin(utilisateur_id) VALUES ('"+id_Uti+"');");
     	}else{
     		OperationData.sauverEnBase("INSERT INTO "+role_Uti+" (utilisateur_id,numPole) VALUES ('"+id_Uti+"','"+1+"');");
@@ -219,7 +219,7 @@ public class Utilisateur
     	 * Renvois true si l'utilisateur est crée correctement, false sinon
     	 */
     	//Si l'utilisateur n'est pas un admin
-    	if(!defaultUser.role_Uti.equals("Admin")){
+    	if(!defaultUser.role_Uti.equals("Administrator")){
     		return false;
     	}
     	
@@ -245,18 +245,18 @@ public class Utilisateur
     	rs.next();
     	String id = rs.getString("id");
     	
-	    if(role.equals("Medecin"))
+	    if(role.equals("Doctor"))
 	    {
 	    	//Creation du médecin dans la base de donnée
 	    	OperationData.sauverEnBase("INSERT INTO Medecin (utilisateur_id,numPole) VALUES ('"+id+"','"+pole+"');");
 	    }
-	    else if(role.equals("Secretaire"))
+	    else if(role.equals("Secretary"))
 	    {
 	    	//Creation du médecin dans la base de donnée
 
 	    	OperationData.sauverEnBase("INSERT INTO Secretaire (utilisateur_id,numPole) VALUES ('"+id+"','"+pole+"');");
 	    }
-	    else if(role.equals("Admin"))
+	    else if(role.equals("Administrator"))
 	    {
 	    	//Creation du médecin dans la base de donnée
 	    	
@@ -325,7 +325,7 @@ public class Utilisateur
     
     public static boolean deleteUtil(String id) throws SQLException
     {
-    	if(!defaultUser.role_Uti.equals("Admin")){
+    	if(!defaultUser.role_Uti.equals("Administrator")){
     		return false;
     	}
     	
