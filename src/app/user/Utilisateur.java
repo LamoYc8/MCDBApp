@@ -8,46 +8,28 @@ import app.dataAcess.OperationData;
 import app.dataAcess.OperationResultSet;
 import app.patient.Dossier;
 
-/*
- * Cette class permet la gestion des utilisateur, elle contiens l'identifiant qui le correspond
- * dans la base de donnée, et trouve le role qui lui ai associé.
- * Elle a une methode pour permet a un utilisateur de ce connecter.
- * 
- * Elle a une Methode createUtil qui est utilisable que par un Administrateur qui permet de créer
- * un Utilisateur dans la base de donnée. 
- * 
- * Elle a une Methode ModifUtil qui est utilisable que pas un administrateur qui permet de 
- * modifier l'Utilisateur dans la base donnée
- */
 
 public class Utilisateur
 {
-	/*
-	 * Methode du singleton pour avoir un seul Utilisateur
-	 */
+
 	private static Utilisateur defaultUser;
 	
-	//Prénom Utilisateur
+
 	private String prenom_Uti;
 	
-	//Nom Utilisateur
+
 	private String nom_Uti;
 	
-	//id de l'utilisateur
+
     private String id_Uti;
     
-    /*
-     * role de l'utilisateur :
-     * 	- Secretaire
-     *  - Admin
-     *  - Medecin
-     */
+
     private String role_Uti;
     
-    //Login de l'utilisateur
+
     private String login_Uti;
     
-    //Mot de passe de l'utilisateur
+
     private String password_Uti;
     
     
@@ -86,7 +68,7 @@ public class Utilisateur
     		role="Administrator";
     	}
     	
-    	//Si dans Medecin
+
     	rs = (ResultSet) OperationData.lireEnBase("select utilisateur_id from Medecin");
 
     	if(OperationResultSet.contains(id,"utilisateur_id",rs))
@@ -99,13 +81,7 @@ public class Utilisateur
     
     public boolean connexionU(String login, String mdp) throws SQLException
     {
-    	/*
-    	 * Cette Methode permet de connecter un Utilisateur depuis la base de donnée.
-    	 * Les arguments : 
-    	 * - login represente l'identifiant de l'utilisateur pour se connecter
-    	 * - mdp represente le mot de passe pour identifier l'utilisateur
-    	 * Renvois True si l'utilisateur c'est bien connecté, false sinon
-    	 */
+
     	ResultSet rs = (ResultSet) OperationData.lireEnBase("select login from Utilisateur");
     	
     	
@@ -115,21 +91,21 @@ public class Utilisateur
 			return false;
 		}
 	
-    	//Recupere tout le mot de passe aved l'identifiant choisi
+
     	rs = (ResultSet) OperationData.lireEnBase("select password from Utilisateur where login='"+login+"';");
     	rs.next();
     	
-    	//Test si le mot de passe est le bon
+
     	if(!this.tcheckMDP(mdp, rs.getString("password")))
     	{
     		System.out.println("erreur mdp");
     		return false;
     	}
         
-    	//Mot de passe de l'utilisateur initialiser dans les champs
+
     	password_Uti = rs.getString("password");
     	
-    	//Login de l'utilisateur initialiser dans les champs
+
     	login_Uti =login;
     	
     	rs = (ResultSet) OperationData.lireEnBase("select id, Nom, Prenom from Utilisateur where login='"+login+"';");
@@ -139,7 +115,7 @@ public class Utilisateur
     	nom_Uti=rs.getString("nom");
     	String identifiant = rs.getString("id");
     	
-    	//Si Dans Secretaire
+
     	rs = (ResultSet) OperationData.lireEnBase("select utilisateur_id from Secretaire");
 
     	if(OperationResultSet.contains(identifiant,"utilisateur_id",rs))
@@ -159,7 +135,7 @@ public class Utilisateur
     	}
     	
     	
-    	//Si dans Medecin
+
     	rs = (ResultSet) OperationData.lireEnBase("select utilisateur_id from Medecin");
 
     	if(OperationResultSet.contains(identifiant,"utilisateur_id",rs))
@@ -169,7 +145,7 @@ public class Utilisateur
     		return true;
     	}
     	
-    	//Si Non on actualise identifiant et on renvois false
+
     	
     	role_Uti=null;
     	id_Uti=null;
@@ -208,57 +184,43 @@ public class Utilisateur
     
     public static boolean createUtil(String name, String forename, String login, String password, String role, int pole)throws SQLException, IllegalArgumentException
     {
-    	/*
-    	 * Cette Methode permet de créer un Utilisateur dans la base de donnée.
-    	 * Les arguments : 
-    	 * - name represente le Nom de l'utilisateur
-    	 * - forename represente le prenom de l'utilisateur
-    	 * - password represente le mot de passe de l'utilisateur
-    	 * - role represente le role de l'utilisateur vaut Admin, Secretaire et Medecin
-    	 * - pole represente le pole de l'utilisateur (vaut 0 pour l'admin)
-    	 * Renvois true si l'utilisateur est crée correctement, false sinon
-    	 */
-    	//Si l'utilisateur n'est pas un admin
+
     	if(!defaultUser.role_Uti.equals("Administrator")){
     		return false;
     	}
     	
-    	//Recherche de tout les logins possibles
+
     	ResultSet rs;
     	rs = (ResultSet) OperationData.lireEnBase("select login from Utilisateur where login='" + login + "';");
 
-    	//Recherche si un login existe déja
+
     	if (rs.next())
     	{
     		throw new IllegalArgumentException("login is not available");
     	}
     	
-    	/*
-    	 * Creation dans la base de donnée de l'utilisateur
-    	 */
+
     	OperationData.sauverEnBase("INSERT INTO Utilisateur (Nom, Prenom, login, password) VALUES ('"+name+"','"+ forename +"','"+login+"','"+password+"');");
     	
-    	/*
-    	 * Recuperer l'id de lutilisateur
-    	 */
+
     	rs = (ResultSet) OperationData.lireEnBase("select id from Utilisateur where login ='"+ login+"';");
     	rs.next();
     	String id = rs.getString("id");
     	
 	    if(role.equals("Doctor"))
 	    {
-	    	//Creation du médecin dans la base de donnée
+
 	    	OperationData.sauverEnBase("INSERT INTO Medecin (utilisateur_id,numPole) VALUES ('"+id+"','"+pole+"');");
 	    }
 	    else if(role.equals("Secretary"))
 	    {
-	    	//Creation du médecin dans la base de donnée
+
 
 	    	OperationData.sauverEnBase("INSERT INTO Secretaire (utilisateur_id,numPole) VALUES ('"+id+"','"+pole+"');");
 	    }
 	    else if(role.equals("Administrator"))
 	    {
-	    	//Creation du médecin dans la base de donnée
+
 	    	
 	    	OperationData.sauverEnBase("INSERT INTO Admin(utilisateur_id) VALUES ('"+id+"');");
 	    }
@@ -338,16 +300,14 @@ public class Utilisateur
     	return true;
     }
     
-    //Getter
+
     public void setId(String str){
     	this.id_Uti=str;
     }
     
     public String getId()
     {
-    	/*
-    	 * Permet de recupere l'identifiant de l'utilisateur
-    	 */
+
         return id_Uti;
     }
     
@@ -357,9 +317,7 @@ public class Utilisateur
     
     public String getPrenom()
     {
-    	/*
-    	 * Permet de recupere l'identifiant de l'utilisateur
-    	 */
+
         return prenom_Uti;
     }
     
@@ -369,9 +327,7 @@ public class Utilisateur
     
     public String getNom()
     {
-    	/*
-    	 * Permet de recupere l'identifiant de l'utilisateur
-    	 */
+
         return nom_Uti;
     }
     
@@ -382,9 +338,7 @@ public class Utilisateur
     
     public String getLogin()
     {
-    	/*
-    	 * Permet de recupere le login de l'utilisateur
-    	 */
+
         return login_Uti;
     }
     
@@ -395,9 +349,7 @@ public class Utilisateur
     
     public String getPassword()
     {
-    	/*
-    	 * Permet de recuperer le mot de passe de l'utilisateur
-    	 */
+
     	
         return password_Uti;
     }
@@ -409,30 +361,24 @@ public class Utilisateur
     
     public String getRole()
     {
-    	/*
-    	 * Permet de recupere role de l'utilisateur
-    	 */
+
     	
         return role_Uti;
     }
 
     private boolean tcheckMDP(String mdp, String mdpInData)
     {
-    	/*
-    	 * Permet de verifier si le mdp et le mdpInData son les meme
-    	 * mdp est le mot de passe saisie et mdpInData est le mot de 
-    	 * passe dans la base de donnée
-    	 */
+
     	
     	if(mdp.equals(mdpInData))
     	{
-    		//Mot de passe correct
+
     		return true;
     		
     	}
     	else
     	{
-    		//Mot de passe incorrect
+
     		return false;
     		
     	}

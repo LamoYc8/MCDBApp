@@ -38,7 +38,7 @@ public class CreateMedicalRecordPanel extends AbstractMedicalRecordPanel
 				{
 					patient.create();
 					
-					Toast.makeText(Window.getInstance(), "The patient '<b>" + txtFirstName.getText() + " " + txtLastName.getText() + " (" + txtIdentifier.getText() + ")" + "'</b> à été crée avec succès", Style.SUCCESS).display();
+					Toast.makeText(Window.getInstance(), "The patient '<b>" + txtFirstName.getText() + " " + txtLastName.getText() + " (" + txtIdentifier.getText() + ")" + "'</b> is successfully created", Style.SUCCESS).display();
 					Utilisateur.getDefaultUser().addDossier(patient.getData().getNumDossier());
 					
 					Window.switchPanel(new SelectMedicalRecordPanel());

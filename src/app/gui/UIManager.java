@@ -10,14 +10,10 @@ import org.jdesktop.swingx.plaf.basic.SpinningCalendarHeaderHandler;
 
 import app.core.Configuration;
 
-/**
- * Classe pour gérer l'apparence générale de l'application.
- */
+
 public class UIManager
 {
-	/**
-	 * Initialise l'apparence générale de l'application.
-	 */
+
 	public static void initialize()
 	{
 		System.setProperty("awt.useSystemAAFontSettings","on");

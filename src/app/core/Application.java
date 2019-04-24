@@ -2,9 +2,7 @@ package app.core;
 
 import java.text.SimpleDateFormat;
 
-/**
- * Constantes de l'application.
- */
+
 public final class Application
 {
     public static final String appName = "Patient Resources Everywhere";

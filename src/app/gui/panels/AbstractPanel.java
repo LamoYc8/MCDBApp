@@ -17,9 +17,7 @@ import app.gui.Toast.Style;
 import app.gui.panels.util.Validator;
 import app.gui.Window;
 
-/**
- * Class de base pour la création de panels.
- */
+
 public abstract class AbstractPanel extends JPanel {
 	private final JPanel container;
 	protected final JPanel content;
@@ -61,9 +59,8 @@ public abstract class AbstractPanel extends JPanel {
 		//updateDynamicComponents();
 	}
 
-	/**
-	 * Change le titre du panel.
-	 */
+
+
 	public void setTitle(String title) {
 		if (titleLabel == null) {
 			titleLabel = new JLabel(title);
@@ -75,10 +72,6 @@ public abstract class AbstractPanel extends JPanel {
 		}
 	}
 
-	/**
-	 * Modifie les propriétés des composants dynamiques en fonction de la taille
-	 * de la fenêtre.
-	 */
 	public void updateDynamicComponents() {
 		if (getWidth() < 1000 || getHeight() < 600) {
 			setBorder(null);
@@ -88,17 +81,13 @@ public abstract class AbstractPanel extends JPanel {
 	}
 	
 
-	/**
-	 * Mets à jour les composants lors d'une mise à jour de la fenêtre.
-	 */
+
 	public void paintComponent(Graphics g) {
 		//updateDynamicComponents();
 		super.paintComponent(g);
 	}
 	
-	/**
-	 * Appelle un AbstractCallablePanel qui doit s'afficher avant ce panel.
-	 */
+
 	public void call(AbstractCallablePanel panel, String message)
 	{
 		SwingUtilities.invokeLater(new Runnable() {
@@ -110,18 +99,14 @@ public abstract class AbstractPanel extends JPanel {
 		});
 	}
 	
-	/**
-	 * Renvoie le validator associé à ce panel.
-	 */
+
 	public Validator getValidator()
 	{
 		if (validator == null) validator = new Validator();
 		return validator;
 	}
 	
-	/**
-	 * Modifie le validator associé à ce panel.
-	 */
+
 	public void setValidator(Validator validator)
 	{
 		this.validator = validator;

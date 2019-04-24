@@ -214,7 +214,7 @@ public abstract class AbstractMedicalRecordPanel extends AbstractPanel
 		
 		Dossier patient = new Dossier();
 		patient.setDataAdm(admData);
-		patient.setHopital("1"); // temporaire
+		patient.setHopital("1");
 		
 		return patient;
 	}

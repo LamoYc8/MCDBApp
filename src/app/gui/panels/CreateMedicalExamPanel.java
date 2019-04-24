@@ -82,7 +82,7 @@ public class CreateMedicalExamPanel extends AbstractPanel
 		btnSave.setFont(new Font("DejaVu Sans", Font.BOLD, 14));
 		panel.add(btnSave);
 		
-		JLabel lblFonctionnalitNonFinalise = new JLabel("Functions not finished");
+		JLabel lblFonctionnalitNonFinalise = new JLabel("Functions for future work");
 		lblFonctionnalitNonFinalise.setForeground(Color.RED);
 		content.add(lblFonctionnalitNonFinalise, "cell 2 1");
 		

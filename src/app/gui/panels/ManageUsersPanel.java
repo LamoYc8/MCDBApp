@@ -88,7 +88,7 @@ public class ManageUsersPanel extends AbstractPanel
 		cmbRole.setEnabled(false);
 		content.add(cmbRole, "cell 2 4");
 		
-		JLabel lblIdentifier = new JLabel("Addressee mail");
+		JLabel lblIdentifier = new JLabel("Address mail");
 		content.add(lblIdentifier, "cell 0 5");
 		
 		JLabel lblPassword = new JLabel("Password");
@@ -158,7 +158,7 @@ public class ManageUsersPanel extends AbstractPanel
 		public UserTableModel(Utilisateur[] users)
 		{
 			this.users = users;
-			for (String columnName : new String[] { "Addressee mail", "Firstname", "Lastname", "Role", "" })
+			for (String columnName : new String[] { "Address mail", "Firstname", "Lastname", "Role", "" })
 			{
 				addColumn(columnName);
 			}

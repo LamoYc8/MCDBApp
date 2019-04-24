@@ -163,7 +163,7 @@ public class SelectMedicalRecordPanel extends AbstractCallablePanel
 			{
 				Dossier medicalRecord = ((PatientTableModel) table.getModel()).getMedicalRecord(table.convertRowIndexToModel(selectedRow));
 				PatientSelector.getInstance().setPatient(medicalRecord);
-				Toast.makeText(Window.getInstance(), "The patient <b>" + medicalRecord.getData().getPrenom() + " " + medicalRecord.getData().getNom() + " (" + medicalRecord.getData().getNumDossier() + ")</b> a été sélectionné", Style.SUCCESS).display();
+				Toast.makeText(Window.getInstance(), "The patient <b>" + medicalRecord.getData().getPrenom() + " " + medicalRecord.getData().getNom() + " (" + medicalRecord.getData().getNumDossier() + ")</b> is selected", Style.SUCCESS).display();
 				
 				if (getCaller() != null) returnCall();
 			}

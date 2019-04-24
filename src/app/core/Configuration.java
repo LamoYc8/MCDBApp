@@ -5,17 +5,12 @@ import java.util.HashMap;
 import java.util.Map.Entry;
 import java.util.Properties;
 
-/**
- * Classe chargée de lire et de transmettre la configuration des fichiers
- * de configuration. 
- */
+
 public class Configuration
 {
 	private static final HashMap<String, String> configuration = new HashMap<String, String>();
 	
-	/**
-	 * Initialise la HashMap `configuration`.
-	 */
+
 	public static void initialize()
 	{
 		Properties properties = new Properties();
@@ -36,9 +31,7 @@ public class Configuration
 		}
 	}
 	
-	/**
-	 * Retourne la valeur de la propriété `key`.
-	 */
+
 	public static String get(String key)
 	{
 		String value = configuration.get(key);
@@ -49,9 +42,7 @@ public class Configuration
 		return value;
 	}
 	
-	/**
-	 * Retourne la valeur de la propriété `key` sous forme int.
-	 */
+
 	public static int getInt(String key)
 	{
 		try

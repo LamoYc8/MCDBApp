@@ -59,13 +59,13 @@ public class ConnectionWindow extends JFrame
 		contentPane.add(lblConnection);
 		ConnectButtonListener connectionListener = new ConnectButtonListener();
 
-		txtLogin = new JTextField("gjack@mail.fr");
+		txtLogin = new JTextField("leizhenyuan1219@gmail.com");
 		txtLogin.setBounds(110, 100, 280, 32);
 		contentPane.add(txtLogin);
 		txtLogin.setColumns(10);
 		txtLogin.addActionListener(connectionListener);
 		
-		txtPassword = new JPasswordField("gjack");
+		txtPassword = new JPasswordField("123");
 		txtPassword.setColumns(10);
 		txtPassword.setBounds(110, 151, 280, 32);
 		contentPane.add(txtPassword);

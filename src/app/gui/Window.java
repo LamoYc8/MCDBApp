@@ -25,7 +25,7 @@ public class Window extends JFrame
 {
     private static Window defaultInstance;
 
-    private JPanel currentPanel; // panel central actuellement affiché
+    private JPanel currentPanel;
 
     private Container contentPane;
     private JPanel glassPane;
@@ -44,7 +44,7 @@ public class Window extends JFrame
         ImageIcon appIcon = new ImageIcon(Window.class.getResource(assetsPath + "/appIcon.png"));
         setIconImage(appIcon.getImage());
         
-        PatientSelector.makeInstance(); // reset l'instance de PatientSelector
+        PatientSelector.makeInstance();
 
         TopPanel topPanel = new TopPanel();
         SideMenu sideMenu = new SideMenu();
@@ -60,40 +60,32 @@ public class Window extends JFrame
 
         glassPane = new JPanel(new BorderLayout());
         glassPane.setOpaque(false);
-        glassPane.add(topPanel, BorderLayout.NORTH); // on ajoute le panel d'en-tête sur le GlassPane pour ne pas décaler le reste du contenu à cause de son ombre
+        glassPane.add(topPanel, BorderLayout.NORTH);
         setGlassPane(glassPane);
 
         glassPane.setVisible(true);
         setVisible(true);
     }
     
-    /**
-     * Retourne l'instance de la fenêtre.
-     */
+
     public static Window getInstance()
     {
     	return defaultInstance;
     }
 
-    /**
-     * Retourne la largeur de la fenêtre.
-     */
+
     public static int getWindowWidth()
     {
         return defaultInstance.getWidth();
     }
 
-    /**
-     * Retourne la hauteur de la fenêtre.
-     */
+
     public static int getWindowHeight()
     {
         return defaultInstance.getHeight();
     }
 
-    /**
-     * Change le panel central affiché par le panel nommé 'name'.
-     */
+
     public static void switchPanel(JPanel panel)
     {
         defaultInstance.contentPane.remove(defaultInstance.currentPanel);
@@ -103,9 +95,7 @@ public class Window extends JFrame
         defaultInstance.revalidate();
     }
 
-    /**
-     * Listener pour quitter l'application en fermant toutes les ressources.
-     */
+
     class CloseWindowListener extends WindowAdapter
     {
         public void windowClosing(WindowEvent e)

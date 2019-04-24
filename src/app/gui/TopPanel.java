@@ -38,8 +38,8 @@ class TopPanel extends JPanel implements Observer
     private String title, shortTitle;
     private JLabel titleLabel;
 
-    private JPanel rightPanel; // panel à droite du panel d'en-tête.
-    private JPanel spacer; // JPanel vide pour espacer le ContentPane (car le TopPanel est placé sur le GlassPane pour gérer les ombres)
+    private JPanel rightPanel;
+    private JPanel spacer;
     private Dimension defaultSize, smallSize, contentDefaultSize, contentSmallSize;
 
     private Border rightPanelBorder, smallRightPanelBorder;
@@ -69,11 +69,6 @@ class TopPanel extends JPanel implements Observer
         PatientSelector.getInstance().addObserver(this);
     }
 
-    /**
-     * Change le titre affiché sur le TopPanel.
-     * 'shortTitle' permet d'indiquer un titre de fallback dans le cas où le
-     * titre est trop long pour être affiché en entier.
-     */
      public static void setTitle(String title, String shortTitle)
      {
          Objects.requireNonNull(title);
@@ -87,9 +82,7 @@ class TopPanel extends JPanel implements Observer
          setTitle(title, null);
      }
 
-    /**
-     * Ajoute le contenu principal au panel.
-     */
+
     private void addContent()
     {
         JPanel content = new JPanel();
@@ -112,9 +105,7 @@ class TopPanel extends JPanel implements Observer
         add(content);
     }
 
-    /**
-     * Initialise le panel à droite du panel d'en-tête.'
-     */
+
     private void initRightPanel()
     {
         rightPanel = new JPanel();
@@ -151,9 +142,7 @@ class TopPanel extends JPanel implements Observer
         }
     }
 
-    /**
-     * Ajoute un ombre au panel.
-     */
+
     private void addShadow()
     {
         DropShadowBorder shadow = new DropShadowBorder();
@@ -166,19 +155,13 @@ class TopPanel extends JPanel implements Observer
         setBorder(shadow);
     }
 
-    /**
-     * Retourne un panel vide de la même taille que le panel d'en-tête afin de
-     * gérer l'espacement des ombres.
-     */
+
     public JPanel getSpacer()
     {
         return spacer;
     }
 
-    /**
-     * Modifie les propriétés des composants dynamiques en fonction de la
-     * taille de la fenêtre.
-     */
+
     private void updateDynamicComponents()
     {
         titleLabel.setPreferredSize(new Dimension(getWidth()-310, 80));
@@ -206,9 +189,7 @@ class TopPanel extends JPanel implements Observer
         }
     }
 
-    /**
-     * Mets à jour les composants lors d'une mise à jour de la fenêtre.
-     */
+
     public void paintComponent(Graphics g)
     {
         updateDynamicComponents();

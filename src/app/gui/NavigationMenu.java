@@ -19,9 +19,7 @@ import java.awt.event.MouseListener;
 import java.lang.reflect.InvocationTargetException;
 import java.awt.event.MouseEvent;
 
-/**
- * Menu à l'intérieur du SideMenToasu.
- */
+
 class NavigationMenu extends JPanel
 {
     private final CardLayout layout;
@@ -29,11 +27,7 @@ class NavigationMenu extends JPanel
 
     private NavigationMenuItem[][] navigationMenuItems = {
         {
-            /*
-            new NavigationMenuItem("Accueil", "Page d'accueil de l'application", "app.gui.panels.HomePanel"),
-            new NavigationMenuItem("À propos", "Informations sur le produit (version, license d'utilisation...)", null),
-            new NavigationMenuItem("Contact", "Soumettre une demande spécifique ou un avis de correction de bug", null)
-            */
+
         },
         {
             new NavigationMenuItem("Create an account", "create a new user", "app.gui.panels.CreateUserPanel", "Administrator"),
@@ -70,9 +64,7 @@ class NavigationMenu extends JPanel
         addCardPanels();
     }
 
-    /**
-     * Ajoute les panels gérés par le CardLayout au NavigationMenu.
-     */
+
     private void addCardPanels()
     {
     	boolean isEmptyMenu;
@@ -99,17 +91,13 @@ class NavigationMenu extends JPanel
         }
     }
 
-    /**
-     * Change le panel affiché par le CardLayout.
-     */
+
     public void displayPanel(String name)
     {
         layout.show(this, name);
     }
 
-    /**
-     * Élément du menu de navigation.
-     */
+
     class NavigationMenuItem extends JPanel implements MouseListener
     {
         private final String title;
@@ -154,19 +142,14 @@ class NavigationMenu extends JPanel
             add(descriptionLabel);
         }
         
-        /**
-         * MenuItem avec restriction d'accès selon le rôle de l'utilisateur.
-         * access est un String énumérant les rôles acceptés, séparé par le caractère '|'.
-         */
+
         public NavigationMenuItem(String title, String description, String panelClassname, String access)
         {
         	this(title, description, panelClassname);
         	this.access = access;
         }
         
-        /**
-         * Retourne true si l'utilisateur a accès au MenuItem.
-         */
+
         public boolean isAvailable(Utilisateur user)
         {
         	return access == null || access.contains(user.getRole());

@@ -7,9 +7,7 @@ import app.gui.UIManager;
 import app.gui.Window;
 import app.user.Utilisateur;
 
-/**
- * Point d'entrée de l'application.
- */
+
 public class Main
 {
 	private static ConnectionWindow connectWindow;
@@ -25,9 +23,7 @@ public class Main
         window = new Window();
     }
     
-    /**
-     * Quitte l'application en fermant toutes les ressources.
-     */
+
     public static void exit()
     {
         try
@@ -42,9 +38,7 @@ public class Main
         System.exit(0);
     }
     
-    /**
-     * Redémarre l'application.
-     */
+
     public static void restart()
     {
     	try

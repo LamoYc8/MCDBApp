@@ -8,9 +8,7 @@ import javax.swing.text.JTextComponent;
 
 import org.jdesktop.swingx.JXDatePicker;
 
-/**
- * Classe fournissant des méthodes statiques facilitant l'utilisation
- */
+
 public class GUIUtility {
 	public static boolean isEmpty(Component component)
 	{

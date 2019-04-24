@@ -22,13 +22,7 @@ public class AdmData
     private String civ;//户籍地址
     private String adresse;//地址
 
-    
-    
-    
-    
-    
-    
-    
+
     public AdmData () { 
     } 
     

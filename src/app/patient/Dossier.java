@@ -246,19 +246,17 @@ public class Dossier
     
     public boolean create() throws SQLException
     {
-    	//Recherche de tout les logins possibles
+
     	ResultSet rs;
     	rs = (ResultSet) OperationData.lireEnBase("select numDossier from Dossier where numDossier='"+data.getNumDossier()+"';");
     	
-    	//Recherche si un login existe déja
+
     	if (rs.next())
     	{
     		throw new IllegalStateException("the medical records's  ID is already taken");
     	}
     	
-    	/*
-    	 * Creation dans la base de donnée de l'utilisateur
-    	 */
+
     	
     	if (!OperationData.sauverEnBase("INSERT INTO DonneeAdministrative (numDossier, NomDonne, PrenomDonne, DateNaissance, PersonneAcontacter, CodePostal, Ville, Adresse, Pays, Civilite, LieuNaissance, NumTel, Mail) VALUES ('"+data.getNumDossier()+"','"+ data.getNom()+"','"+data.getPrenom()+"','"+ data.getDateNaiss()+"','"+data.getAContacter()+"','"+data.getCodePostal()+"','"+data.getVille()+"','"+ data.getAdresse()+"','"+data.getPays()+"','"+ data.getCiv()+"','"+data.getLieuNaiss()+"','"+data.getNum()+"','"+data.getMail() +"');"))
     	{

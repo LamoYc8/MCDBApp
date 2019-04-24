@@ -13,17 +13,13 @@ public class Validator
 	private Component[] requiredFields;
 	protected String errorMessage;
 	
-	/**
-	 * Retourne le message d'erreur éventuel à la suite d'un appel à la méthode validateFields().
-	 */
+
 	public String getErrorMessage()
 	{
 		return errorMessage;
 	}
 	
-	/**
-	 * Définis les champs de texte obligatoires.
-	 */
+
 	public void setRequiredFields(Component[] components) {
 		for (Component component : components)
 		{
@@ -35,9 +31,7 @@ public class Validator
 		requiredFields = components;
 	}
 	
-	/**
-	 * Définis les champs de texte obligatoires automatiquement (tous).
-	 */
+
 	public void setRequiredFieldsAuto(Container caller)
 	{
 		ArrayList<Component> components = new ArrayList<Component>();
@@ -48,9 +42,7 @@ public class Validator
 		setRequiredFields(componentsArray);
 	}
 	
-	/**
-	 * Définis les champs de texte obligatoires automatiquement (tous les JLabel avec labelFor).
-	 */
+
 	private void setRequiredFieldsAuto(Container caller, ArrayList<Component> components)
 	{
 		for (Component component : caller.getComponents())
@@ -66,9 +58,7 @@ public class Validator
 		}
 	}
 	
-	/**
-	 * Vérifie que l'ensemble des champs requis sont remplis.
-	 */
+
 	public boolean validateFields() {
 		errorMessage = null;
 		if (requiredFields != null)

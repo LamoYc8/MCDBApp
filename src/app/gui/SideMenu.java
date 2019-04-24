@@ -19,22 +19,17 @@ import app.gui.components.TransparentRadioButton;
 import app.gui.panels.HomePanel;
 import app.user.Utilisateur;
 
-/**
- * Menu des boutons sur le côté gauche de la fenêtre.
- * Permet de sélectionner une fonctionnalité de l'application.
- * Contient le panel des boutons (buttonsMenu) et le menu de navigation
- * (NavigationMenu).
- */
+
 class SideMenu extends JPanel
 {
     private JPanel buttonsMenu;
-    private NavigationMenu navMenu; // menu de navigation (voir NavigationMenu)
+    private NavigationMenu navMenu;
 
     private Dimension defaultSize;
     private Dimension extendedSize;
 
     private ButtonGroup buttonGroup;
-    private TransparentRadioButton selectedButton; // bouton sélectionné
+    private TransparentRadioButton selectedButton;
 
     private static final String[] menuItems = {"home", "user", "medicalRecord", "hospital", "settings"};
 
@@ -60,9 +55,7 @@ class SideMenu extends JPanel
         add(navMenu, BorderLayout.CENTER);
     }
 
-    /**
-     * Initialise et ajoute les boutons de navigation au menu.
-     */
+
     private void addButtons()
     {
     	Utilisateur user = Utilisateur.getDefaultUser();
@@ -95,9 +88,7 @@ class SideMenu extends JPanel
         }
     }
 
-    /**
-     * Gère les clics sur les boutons du menu.
-     */
+
     class ButtonListener implements ActionListener
     {
         public void actionPerformed(ActionEvent e) {

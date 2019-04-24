@@ -62,7 +62,7 @@ public class CreateUserPanel extends AbstractPanel
 		cmbRole.addItem("Administrator");
 		content.add(cmbRole, "cell 2 1");
 		
-		JLabel lblIdentifier = new JLabel("Addressee mail");
+		JLabel lblIdentifier = new JLabel("Address mail");
 		content.add(lblIdentifier, "cell 0 2");
 		
 		JLabel lblPassword = new JLabel("Password");
